@@ -78,6 +78,7 @@ jobs:
         output_file_path: console,results.sarif
         config_file: .checkov.yaml
         skip_path: gha-creds-*json
+        soft_fail: true # this is added for workshop purposes, omitting the hardening
 
     - name: Terraform Plan
       id: plan
