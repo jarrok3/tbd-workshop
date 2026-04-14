@@ -140,7 +140,7 @@ Legend
         gsutil ls gs://PROJECT_NAME-data/data/shakespeare/
         ```
 
-        ![img.png](doc/screens/succeed.png)
+        ![img.png](doc/screens/dag_succeed.png)
 
 10. Create a BigQuery dataset and an external table using SQL
 
@@ -152,9 +152,9 @@ Legend
     bq mk --dataset --location=europe-west1 shakespeare
     ```
 
-    **_place the SQL code and query output here_**
+    ![img.png](doc/screens/sql_code_query_output.png)
 
-    **_why does ORC not require a table schema?_**
+    ORC jest formatem samopiszącym się. W przeciwieństwie do formatu CSV, gdzie dane to czysty tekst i musimy ręcznie definiować, która kolumna to liczba, a która to data, pliki ORC przechowują metadane bezpośrednio w swojej strukturze.
 
 11. Add support for preemptible/spot instances in a Dataproc cluster
 
