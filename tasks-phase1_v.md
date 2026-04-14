@@ -95,7 +95,7 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 For all the resources of type: `google_artifact_registry_repository`, `google_storage_bucket`
 create a sample usage profiles and add it to the Infracost task in CI/CD pipeline. Usage file [example](https://github.com/infracost/infracost/blob/master/infracost-usage-example.yml)
 
-   Dla przykładowego zuzycia kosztów w chmurze załozymy większe wartosci zasobów, zeby przekroczyć darmowe limity chmur i zobaczyc prawdeziwą wycenę projektu. Założono przechowywanie obrazów o łącznej wadze 20 GB oraz miesięczny transfer danych na poziomie 50 GB. Przyjęto 100 GB przechowywanych danych typu Big Data (pliki tekstowe, format ORC). Liczba operacji klasy A (zapis) została oszacowana na 5,000, a klasy B (odczyt) na 10,000, biorąc pod uwagę częste uruchamianie zadań Spark i zapytań BigQuery. Dla mniejszych bucketów technicznych przyjęto minimalne wartości (np. 1 GB), ponieważ przechowują one jedynie niewielkie pliki konfiguracyjne.
+   Dla przykładowego zuzycia kosztów w chmurze załozymy większe wartosci zasobów, zeby przekroczyć darmowe limity chmur i zobaczyc prawdeziwą wycenę projektu. Założono przechowywanie obrazów o łącznej wadze 500 GB oraz miesięczny transfer danych na poziomie 50 GB. Przyjęto 500 GB przechowywanych danych typu Big Data (pliki tekstowe, format ORC). Liczba operacji klasy A (zapis) została oszacowana na 5,000, a klasy B (odczyt) na 10,000, biorąc pod uwagę częste uruchamianie zadań Spark i zapytań BigQuery. Dla mniejszych bucketów technicznych przyjęto wartości 10 GB.
 
    ***place the screenshot from infracost output here***
 
