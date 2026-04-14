@@ -1,0 +1,24 @@
+version: 0.1
+resource_usage:
+  # Dla Artifact Registry (miejsce na obrazy Docker)
+  google_artifact_registry_repository.tbd-repo:
+    storage_gb: 500
+    monthly_egress_data_transfer_gb:
+      europe_west1: 50
+
+  # Dla głównego bucketa na dane
+  google_storage_bucket.tbd-data-bucket:
+    storage_gb: 500
+    monthly_class_a_operations: 5000
+    monthly_class_b_operations: 10000
+
+  # Dla bucketa na kod (skrypty Spark)
+  google_storage_bucket.tbd-code-bucket:
+    storage_gb: 10
+    monthly_class_a_operations: 100
+    monthly_class_b_operations: 500
+
+  # Dla modułu Cloud Router / NAT
+  module.cloud-router.google_compute_router_nat.nats[0]:
+    assigned_vms: 5 
+    monthly_data_processed_gb: 100 
