@@ -97,7 +97,7 @@ Legend
     Dla przykładowego zuzycia kosztów w chmurze załozymy większe wartosci zasobów, zeby przekroczyć darmowe limity chmur i zobaczyc prawdeziwą wycenę projektu. Założono przechowywanie obrazów o łącznej wadze 500 GB oraz miesięczny transfer danych na poziomie 50 GB. Przyjęto 500 GB przechowywanych danych typu Big Data (pliki tekstowe, format ORC). Liczba operacji klasy A (zapis) została oszacowana na 5,000, a klasy B (odczyt) na 10,000, biorąc pod uwagę częste uruchamianie zadań Spark i zapytań BigQuery. Dla mniejszych bucketów technicznych przyjęto wartości 10 GB.
 
     ![img.png](doc/screens/infracost_1.png)
-    <!-- TODO: ![img.png](doc/screens/infracost_2.png) -->
+    ![img.png](doc/screens/infracost_2.png)
 
 9.  Find and correct the error in spark-job.py
 
