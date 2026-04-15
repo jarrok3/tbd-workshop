@@ -196,6 +196,15 @@ _Fig. 5. Infracost_
     Zmieniony plik:
     [tbd-workshop/modules/dataproc/main.tf at taskPhaseOne · jarrok3/tbd-workshop](https://github.com/jarrok3/tbd-workshop/blob/taskPhaseOne/modules/dataproc/main.tf)
 
+Dodany kod: 
+preemptible_worker_config {
+      num_instances = 2
+      disk_config {
+        boot_disk_type    = "pd-standard"
+        boot_disk_size_gb = 100
+      }
+    }
+
 12. Triggered Terraform Destroy on Schedule or After PR Merge. Goal: make sure we never forget to clean up resources and burn money.
 
 Add a new GitHub Actions workflow that:
