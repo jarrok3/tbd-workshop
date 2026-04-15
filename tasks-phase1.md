@@ -113,6 +113,7 @@ YARN ResourceManager UI runs on port **8088**.
    1. Description of the components of service accounts
    2. List of buckets for disposal
 
+_Fig. 4. Architecture Diagram_
 ![img.png](doc/figures/Architecture_Diagram.drawio.png)
 
 - tbd-2026l-342189-lab@tbd-2026l-342189.iam.gserviceaccount.com -> terraform sa (service account) with owner rights for resources management through IaC
@@ -126,7 +127,7 @@ YARN ResourceManager UI runs on port **8088**.
 
     Dla przykładowego zuzycia kosztów w chmurze załozymy większe wartosci zasobów, zeby przekroczyć darmowe limity chmur i zobaczyc prawdeziwą wycenę projektu. Założono przechowywanie obrazów o łącznej wadze 500 GB oraz miesięczny transfer danych na poziomie 50 GB. Przyjęto 500 GB przechowywanych danych typu Big Data (pliki tekstowe, format ORC). Liczba operacji klasy A (zapis) została oszacowana na 5,000, a klasy B (odczyt) na 10,000, biorąc pod uwagę częste uruchamianie zadań Spark i zapytań BigQuery. Dla mniejszych bucketów technicznych przyjęto wartości 10 GB.
 
-    ![img.png](doc/screens/infracost_1.png)
+_Fig. 5. Infracost_
     ![img.png](doc/screens/infracost_2.png)
 
 9.  Find and correct the error in spark-job.py
@@ -147,6 +148,8 @@ YARN ResourceManager UI runs on port **8088**.
 
         a) In the Airflow UI (http://AIRFLOW_EXTERNAL_IP:8080, login: admin/admin), find the `dataproc_job` DAG, unpause it and trigger it manually.
 
+
+        _Fig. 6. Fail DAG dataproc_job tasks_
         ![img.png](doc/screens/dag_fail.png)
 
         b) The DAG will fail. Examine the task logs in the Airflow UI to find the root cause.
@@ -169,7 +172,8 @@ YARN ResourceManager UI runs on port **8088**.
         ```bash
         gsutil ls gs://PROJECT_NAME-data/data/shakespeare/
         ```
-
+        
+        _Fig. 7. Succeed DAG dataproc_job tasks_
         ![img.png](doc/screens/dag_succeed.png)
 
 10. Create a BigQuery dataset and an external table using SQL
@@ -182,13 +186,12 @@ YARN ResourceManager UI runs on port **8088**.
     bq mk --dataset --location=europe-west1 shakespeare
     ```
 
+    _Fig. 8 BidQuery service: SQL code and query output_
     ![img.png](doc/screens/sql_code_query_output.png)
 
     ORC jest formatem samopiszącym się. W przeciwieństwie do formatu CSV, gdzie dane to czysty tekst i musimy ręcznie definiować, która kolumna to liczba, a która to data, pliki ORC przechowują metadane bezpośrednio w swojej strukturze.
 
 11. Add support for preemptible/spot instances in a Dataproc cluster
-
-    **_place inserted terraform code_**
 
     Zmieniony plik:
     [tbd-workshop/modules/dataproc/main.tf at taskPhaseOne · jarrok3/tbd-workshop](https://github.com/jarrok3/tbd-workshop/blob/taskPhaseOne/modules/dataproc/main.tf)
