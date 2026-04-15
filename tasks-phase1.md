@@ -194,7 +194,7 @@ _Fig. 5. Infracost_
 11. Add support for preemptible/spot instances in a Dataproc cluster
 
     Zmieniony plik:
-    [tbd-workshop/modules/dataproc/main.tf at taskPhaseOne · jarrok3/tbd-workshop](https://github.com/jarrok3/tbd-workshop/blob/taskPhaseOne/modules/dataproc/main.tf)
+    (https://github.com/jarrok3/tbd-workshop/blob/master/modules/dataproc/main.tf)
 
 Dodany kod: 
 preemptible_worker_config {
