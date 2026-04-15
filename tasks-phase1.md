@@ -96,14 +96,15 @@ W rezultacie moduł tworzy kompletne środowisko umożliwiające uruchamianie i 
 
    gcloud compute ssh tbd-cluster-m --zone=europe-west1-b --tunnel-through-iap -- -L 8088:localhost:8088
 
-<img width="799" height="586" alt="image" src="https://github.com/user-attachments/assets/2e000100-599d-4cf0-b217-97927ba7f8b1" />
 
-<img width="975" height="619" alt="image" src="https://github.com/user-attachments/assets/b98dbfa9-c013-408d-a416-67b23d1daebe" />
+![img.png](doc/screens/exc6_1.png)
+
+![img.png](doc/screens/exc6_2.png)
 
 Aby zoabaczyc wynik należy wpisac w przeglądarkę:  
 http://localhost:8088
 
-<img width="975" height="441" alt="image" src="https://github.com/user-attachments/assets/b7a35e1a-3a04-45e5-9eb7-577f6d4f72dc" />
+![img.png](doc/screens/exc6_3.png)
 
 Hint: the Dataproc cluster has `internal_ip_only = true`, so you need to use an IAP tunnel.
 See: `gcloud compute ssh` with `-- -L <local_port>:localhost:<remote_port>` and `--tunnel-through-iap` flag.
@@ -226,8 +227,8 @@ Hint: use the existing `.github/workflows/destroy.yml` as a starting point.
 
 https://github.com/jarrok3/tbd-workshop/blob/master/.github/workflows/auto-destroy.yml
 
-<img width="975" height="340" alt="image" src="https://github.com/user-attachments/assets/4f35167d-624c-417b-bb9d-de42111b5870" />
+![img.png](doc/screens/auto-destroy1.png)
 
-<img width="975" height="402" alt="image" src="https://github.com/user-attachments/assets/b9566e29-6694-4754-9b84-d51a07ca0dd2" />
+![img.png](doc/screens/auto_destroy2.png)
 
 Regularne czyszczenie zasobów powoduje zmniejszenie kosztów. Zasoby generują kosztu tak długo jak istnieją.
