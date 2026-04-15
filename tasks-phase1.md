@@ -97,7 +97,21 @@ W rezultacie moduł tworzy kompletne środowisko umożliwiające uruchamianie i 
 6. Reach YARN UI
 
    ***place the command you used for setting up the tunnel, the port and the screenshot of YARN UI here***
+    gcloud compute ssh tbd-cluster-m --zone=europe-west1-b --tunnel-through-iap -- -L 8088:localhost:8088
 
+<img width="799" height="586" alt="image" src="https://github.com/user-attachments/assets/2e000100-599d-4cf0-b217-97927ba7f8b1" />
+
+<img width="975" height="619" alt="image" src="https://github.com/user-attachments/assets/b98dbfa9-c013-408d-a416-67b23d1daebe" />
+
+
+Aby zoabaczyc wynik należy wpisac w przeglądarkę:  
+http://localhost:8088
+
+<img width="975" height="441" alt="image" src="https://github.com/user-attachments/assets/b7a35e1a-3a04-45e5-9eb7-577f6d4f72dc" />
+
+
+
+    
    Hint: the Dataproc cluster has `internal_ip_only = true`, so you need to use an IAP tunnel.
    See: `gcloud compute ssh` with `-- -L <local_port>:localhost:<remote_port>` and `--tunnel-through-iap` flag.
    YARN ResourceManager UI runs on port **8088**.
@@ -180,6 +194,9 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
 12. Add support for preemptible/spot instances in a Dataproc cluster
 
     ***place the link to the modified file and inserted terraform code***
+    Zmieniony plik:
+      [tbd-workshop/modules/dataproc/main.tf at taskPhaseOne · jarrok3/tbd-workshop](https://github.com/jarrok3/tbd-workshop/blob/taskPhaseOne/modules/dataproc/main.tf)
+
 
 13. Triggered Terraform Destroy on Schedule or After PR Merge. Goal: make sure we never forget to clean up resources and burn money.
 
@@ -199,7 +216,12 @@ Steps:
 Hint: use the existing `.github/workflows/destroy.yml` as a starting point.
 
 ***paste workflow YAML here***
-
+https://github.com/jarrok3/tbd-workshop/blob/master/.github/workflows/auto-destroy.yml
 ***paste screenshot/log snippet confirming the auto-destroy ran***
+<img width="975" height="340" alt="image" src="https://github.com/user-attachments/assets/4f35167d-624c-417b-bb9d-de42111b5870" />
+
+<img width="975" height="402" alt="image" src="https://github.com/user-attachments/assets/b9566e29-6694-4754-9b84-d51a07ca0dd2" />
+
 
 ***write one sentence why scheduling cleanup helps in this workshop***
+Regularne czyszczenie zasobów powoduje zmniejszenie kosztów. Zasoby generują kosztu tak długo jak istnieją.
