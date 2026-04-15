@@ -216,8 +216,11 @@ Steps:
 Hint: use the existing `.github/workflows/destroy.yml` as a starting point.
 
 ***paste workflow YAML here***
+
 https://github.com/jarrok3/tbd-workshop/blob/master/.github/workflows/auto-destroy.yml
+
 ***paste screenshot/log snippet confirming the auto-destroy ran***
+
 <img width="975" height="340" alt="image" src="https://github.com/user-attachments/assets/4f35167d-624c-417b-bb9d-de42111b5870" />
 
 <img width="975" height="402" alt="image" src="https://github.com/user-attachments/assets/b9566e29-6694-4754-9b84-d51a07ca0dd2" />
