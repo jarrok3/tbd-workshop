@@ -70,12 +70,29 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 
     2. Create PR from this branch to **YOUR** master and merge it to make new release.
 
-    ***place the screenshot from GA after successful application of release***
+*Fig. 1. Initial release building the cloud infrastructure* 
+![img.png](doc/figures/init_release_success.png)
 
 
 5. Analyze terraform code. Play with terraform plan, terraform graph to investigate different modules.
 
-    ***describe one selected module and put the output of terraform graph for this module here***
+*Fig. 2. Graph of the overall system architecture*
+![img.png](graph.png)
+
+
+*Fig. 3. Graph of one of the submodules - airflow*
+![img.png](airflowgraph.png)
+
+**Analizowany moduł: Airflow**
+
+Moduł Airflow odpowiada za utworzenie i konfigurację środowiska orkiestracji procesów danych w oparciu o platformę Google Cloud. Na podstawie analizy zależności zasobów w Terraformie można stwierdzić, że środowisko to zostało zaimplementowane z wykorzystaniem klastra Kubernetes zarządzanego przez usługę Google Kubernetes Engine (GKE).
+
+W pierwszej kolejności moduł aktywuje wymagane API projektu, w szczególności usługę odpowiedzialną za obsługę kontenerów. Następnie tworzony jest klaster Kubernetes (google_container_cluster.airflow), który stanowi podstawową warstwę obliczeniową dla działania komponentów Airflow. W ramach klastra definiowana jest pula węzłów (google_container_node_pool.airflow_nodes), czyli zestaw maszyn wirtualnych odpowiedzialnych za wykonywanie zadań.
+Istotnym elementem modułu jest utworzenie dedykowanego konta serwisowego (google_service_account.airflow_sa), które wykorzystywane jest przez środowisko Airflow do komunikacji z innymi usługami Google Cloud. Konto to otrzymuje odpowiednie role IAM, umożliwiające realizację zadań związanych z przetwarzaniem danych oraz integracją z infrastrukturą chmurową. W szczególności przypisywane są role pozwalające na zarządzanie zadaniami w usłudze Dataproc (dataproc.editor), korzystanie z innych kont serwisowych (serviceAccountUser) oraz dostęp do zasobów pamięci masowej w Cloud Storage.
+
+Zależności pomiędzy zasobami wskazują, że klaster Kubernetes tworzony jest po aktywacji odpowiednich usług, a pula węzłów jest bezpośrednio powiązana z klastrem. Konto serwisowe wraz z przypisanymi rolami stanowi natomiast element wspólny, wykorzystywany przez komponenty uruchamiane w klastrze.
+
+W rezultacie moduł tworzy kompletne środowisko umożliwiające uruchamianie i zarządzanie przepływami pracy (DAG-ami) w Airflow. Dzięki integracji z usługami takimi jak Dataproc oraz Cloud Storage możliwe jest budowanie złożonych potoków przetwarzania danych, obejmujących zarówno orkiestrację zadań, jak i operacje na dużych zbiorach danych.
 
 6. Reach YARN UI
 
@@ -89,7 +106,14 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
     1. Description of the components of service accounts
     2. List of buckets for disposal
 
-    ***place your diagram here***
+![img.png](doc/figures/Architecture_Diagram.drawio.png)
+
+
+- tbd-2026l-342189-lab@tbd-2026l-342189.iam.gserviceaccount.com -> terraform sa (service account) with owner rights for resources management through IaC
+- tbd-2026l-342189-dataproc-sa@tbd-2026l-342189.iam.gserviceaccount.com -> for batch processing and data access; roles: dataproc.worker, bigquery.Editor, bigquery.user
+- tbd-2026l-342189-airflow-sa@tbd-2026l-342189.iam.gserviceaccount.com -> airflow sa used for dataflows; roles: dataproc.editor, iam.serviceAccountUser, storage.objectViewer
+- 687082916393-compute@developer.gserviceaccount.com -> compute engine sa, automatically created for computing
+
 
 8. Create a new PR and add costs by entering the expected consumption into Infracost
 For all the resources of type: `google_artifact_registry_repository`, `google_storage_bucket`
