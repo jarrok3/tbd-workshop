@@ -1,6 +1,9 @@
 # Local .terraform directories
 **/.terraform/*
 
+# Data
+data/phase2_26L/group_10/
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
